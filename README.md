@@ -1,89 +1,308 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 TechKrush
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern Laravel-based tech news and blog platform featuring real-time updates, user authentication, and a sleek interface built with Livewire and Tailwind CSS.
 
-## About Laravel
+## ✨ Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **🔐 User Authentication**: Secure login and registration powered by Laravel Fortify
+- **📝 Post Management**: Create, edit, and manage tech news posts
+- **🏷️ Categories & Tags**: Organize content with categories and tags
+- **💬 Comments System**: Engage users with a commenting feature
+- **👥 Role-Based Permissions**: Flexible user roles and permissions system
+- **⚡ Real-Time Updates**: Livewire-powered reactive components
+- **📱 Responsive Design**: Mobile-first design with Tailwind CSS
+- **🐳 Docker Support**: Easy database setup with Docker Compose
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Prerequisites
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Before you begin, ensure you have the following installed on your system:
 
-## Learning Laravel
+- **🐘 PHP 8.2 or higher**
+- **📦 Composer** (PHP dependency manager)
+- **🟢 Node.js 18+ and pnpm** (or npm/yarn)
+- **🗄️ MySQL 8.0+** (or use Docker for database)
+- **📚 Git**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🐳 Optional (for Docker setup)
+- **🐳 Docker & Docker Compose**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🛠️ Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1️⃣ Clone the Repository
 
-## Laravel Sponsors
+```bash
+git clone https://github.com/sbouye/techkrush.git
+cd techkrush
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 2️⃣ Environment Setup
 
-### Premium Partners
+Copy the environment file and configure your settings:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+cp .env.example .env
+```
 
-## Contributing
+Edit the `.env` file to match your local environment:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```env
+APP_NAME=TechKrush
+APP_ENV=local
+APP_KEY=  # Will be generated in next step
+APP_DEBUG=true
+APP_URL=http://localhost:8000
 
-## Code of Conduct
+# Database Configuration
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=techkrush
+DB_USERNAME=root
+DB_PASSWORD=your_mysql_password
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Or for Docker MySQL
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=techkrush
+DB_USERNAME=root
+DB_PASSWORD=root
+```
 
-## Security Vulnerabilities
+### 3️⃣ Install PHP Dependencies
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+```
 
-## License
+### 4️⃣ Generate Application Key
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan key:generate
+```
 
-# TechKrush
+### 5️⃣ Database Setup
 
-## Docker MySQL Setup
+#### 🐳 Option A: Using Docker (Recommended)
 
-This project includes a docker-compose.yml to run a MySQL database using the latest LTS image.
+Start the MySQL database and phpMyAdmin:
 
-### Start MySQL
+```bash
+docker-compose up -d
+```
 
-1. Copy env file if needed:
-   cp .env.example .env
-2. Start the database:
-   docker compose up -d mysql
+This will start:
+- 🗄️ MySQL on port 3306
+- 🖥️ phpMyAdmin on http://localhost:8080
 
-The database will be available on localhost:3306 with persistent storage in a named volume.
+#### 💻 Option B: Local MySQL
 
-### Environment variables
+Ensure your local MySQL server is running and create a database named `techkrush`.
 
-Configure database access with the standard Laravel DB_ variables in your .env:
+### 6️⃣ Run Database Migrations
 
-- DB_CONNECTION=mysql
-- DB_HOST=127.0.0.1
-- DB_PORT=3306
-- DB_DATABASE=techkrush
-- DB_USERNAME=root
-- DB_PASSWORD=
+```bash
+php artisan migrate
+```
 
-Note: docker-compose uses its own defaults inside the container; you can override them by setting the same DB_ values to match your local setup and updating docker-compose if needed.
+### 7️⃣ Install Node.js Dependencies
+
+```bash
+pnpm install
+# or
+npm install
+```
+
+### 8️⃣ Build Frontend Assets
+
+For development:
+
+```bash
+pnpm run dev
+# or
+npm run dev
+```
+
+For production build:
+
+```bash
+pnpm run build
+# or
+npm run build
+```
+
+## ▶️ Running the Application
+
+### 🚀 Development Mode (Recommended)
+
+Use the built-in development script that runs all necessary services concurrently:
+
+```bash
+composer run dev
+```
+
+This command will start:
+- 🌐 Laravel development server on http://localhost:8000
+- 🔄 Queue worker for background jobs
+- 📊 Log monitoring with Laravel Pail
+- ⚡ Vite development server for hot reloading
+
+### 🔧 Manual Startup
+
+If you prefer to run services individually:
+
+1. 🌐 Start the Laravel server:
+   ```bash
+   php artisan serve
+   ```
+
+2. 🔄 Start the queue worker (in a separate terminal):
+   ```bash
+   php artisan queue:work
+   ```
+
+3. ⚡ Start Vite for asset compilation:
+   ```bash
+   pnpm run dev
+   ```
+
+4. 📊 Monitor logs (optional, in another terminal):
+   ```bash
+   php artisan pail
+   ```
+
+## 🌐 Accessing the Application
+
+- **🏠 Main Application**: http://localhost:8000
+- **🖥️ phpMyAdmin** (if using Docker): http://localhost:8080
+
+## 🛣️ Available Routes
+
+- `/` - 🏠 Home page
+- `/news` - 📰 Posts listing
+- `/podcasts` - 🎧 Podcasts section
+- `/resource` - 📚 Resources section
+- `/admin/dashboard` - 📊 Admin dashboard
+- `/admin/dashboard/category` - 🏷️ Category management
+
+## 🧪 Testing
+
+Run the test suite:
+
+```bash
+composer run test
+# or
+php artisan test
+```
+
+## 🌱 Database Seeding (Optional)
+
+To populate the database with sample data:
+
+```bash
+php artisan db:seed
+```
+
+## 🎨 Code Quality
+
+### 🐘 PHP Code Style
+
+Check and fix code style with Laravel Pint:
+
+```bash
+./vendor/bin/pint
+```
+
+### 🔍 Static Analysis
+
+Run static analysis (if configured):
+
+```bash
+# Add your preferred static analysis tool
+```
+
+## 🚀 Deployment
+
+### 📦 Production Build
+
+1. ⚡ Build optimized assets:
+   ```bash
+   pnpm run build
+   ```
+
+2. ⚙️ Set production environment variables:
+   ```env
+   APP_ENV=production
+   APP_DEBUG=false
+   APP_URL=https://yourdomain.com
+   ```
+
+3. 🗄️ Run database migrations on production:
+   ```bash
+   php artisan migrate --force
+   ```
+
+4. ⚡ Clear and cache config:
+   ```bash
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   ```
+
+### 🐳 Docker Deployment
+
+For containerized deployment, consider using Laravel Sail or custom Docker setup.
+
+## 📁 Project Structure
+
+```
+├── app/                    # 📱 Application code
+│   ├── Actions/           # 🎯 Custom actions
+│   ├── Http/Controllers/  # 🌐 HTTP controllers
+│   ├── Livewire/         # ⚡ Livewire components
+│   ├── Models/           # 🗃️ Eloquent models
+│   └── Providers/        # 🔧 Service providers
+├── database/              # 🗄️ Database migrations and seeders
+├── public/               # 🌍 Public assets
+├── resources/            # 🎨 Views, CSS, JS
+│   ├── css/
+│   ├── js/
+│   └── views/
+├── routes/               # 🛣️ Route definitions
+├── storage/              # 💾 File storage
+├── tests/                # 🧪 Test files
+└── vendor/               # 📦 Composer dependencies
+```
+
+## 🛠️ Key Technologies
+
+- **🐘 Laravel 12**: PHP framework
+- **⚡ Livewire 3**: Reactive components
+- **🔐 Laravel Fortify**: Authentication
+- **🎨 Tailwind CSS 4**: Utility-first CSS
+- **⚡ Vite**: Fast build tool
+- **🗄️ MySQL**: Database
+- **🐳 Docker**: Containerization
+
+## 🤝 Contributing
+
+1. 🍴 Fork the repository
+2. 🌿 Create a feature branch: `git checkout -b feature/your-feature`
+3. 💾 Commit your changes: `git commit -am 'Add some feature'`
+4. ⬆️ Push to the branch: `git push origin feature/your-feature`
+5. 🔄 Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 💬 Support
+
+If you encounter any issues or have questions:
+
+1. 📖 Check the [Laravel Documentation](https://laravel.com/docs)
+2. 📖 Review [Livewire Documentation](https://laravel-livewire.com/docs)
+3. 🐛 Open an issue on GitHub
+
+---
+
+Built with ❤️ using Laravel and modern web technologies.
