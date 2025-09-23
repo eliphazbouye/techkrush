@@ -21,6 +21,7 @@ class Categories extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.categories');
+        $categories = \App\Models\Category::all();
+        return view('components.categories', compact('categories'));
     }
 }

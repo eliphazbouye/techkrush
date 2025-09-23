@@ -1,14 +1,11 @@
 <div>
-    <ul class="space-y-1 flex space-x-4">
-        <li>
-            {{-- <a href="{{ route('category.show', 'technology') }}" class="text-gray-700 hover:text-violet-700">Technology</a> --}}
-            <a href="" class="text-gray-700 hover:text-violet-700">Technology</a>
-        </li>
-        <li>
-            <a href="" class="text-gray-700 hover:text-violet-700">Health</a>
-        </li>
-        <li>
-            <a href="" class="text-gray-700 hover:text-violet-700">Finance</a>
-        </li>
+    <ul class="flex gap-4">
+        @foreach($categories as $category)
+            <li class="px-3 py-1 bg-gray-200 rounded-full text-sm">
+                <a href="">
+                {{ $category->name }}
+                </a>
+            </li>
+        @endforeach
     </ul>
 </div>
