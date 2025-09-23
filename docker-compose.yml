@@ -18,6 +18,21 @@ services:
       start_period: 30s
     command: ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
 
+  pma:
+    image: phpmyadmin/phpmyadmin
+    container_name: techkrush-pma
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: "root"
+      PMA_PASSWORD: ${DB_PASSWORD:-root}
+    ports:
+      - "8080:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
 volumes:
   db_data:
     driver: local
