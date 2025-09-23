@@ -16,3 +16,6 @@ Route::get('/podcasts', function () {
 Route::get('/Resource', function () {
     return 'Resource';
 })->name('resource');
+
+Route::get('/admin/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/admin/dashboard/category', [\App\Http\Controllers\CategoryController::class, 'index'])->name('dashboard.category');
